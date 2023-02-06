@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&family=Sigmar+One&display=swap");
+
 .container {
   padding: 0 2rem;
 }
@@ -7,15 +9,65 @@
   padding: 4rem 0;
   flex: 1;
   display: flex;
+  /* flex-direction: column; */
+}
+
+.body {
+  width: 80%;
+  height: 100vh;
+  position: absolute;
+  right: 0;
+  top: 0;
+  padding: 3rem;
+}
+
+.header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.progress {
+  height: 300px;
+  width: 300px;
+  border: 1px solid gray;
+  border-radius: 10px;
+  display: flex;
   flex-direction: column;
+  align-items: center;
   justify-content: center;
+}
+
+.current_week {
+  margin-top: 60px;
+  margin-bottom: 30px;
+}
+
+.assignment_container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.assignment {
+  height: 200px;
+  width: 200px;
+  margin: 20px;
+  padding: 10px;
+  border: 1px solid gray;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
   align-items: center;
 }
 
 .footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
   display: flex;
   flex: 1;
-  padding: 2rem 0;
+  padding: 1rem 0;
   border-top: 1px solid #eaeaea;
   justify-content: center;
   align-items: center;
