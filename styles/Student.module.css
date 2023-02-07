@@ -1,17 +1,39 @@
+.background {
+  height: 100vh;
+  width: 100%;
+  background-color: #212934;
+}
+
 .container {
   display: flex;
   flex-direction: column;
-  margin: 6rem 10rem;
+  /* margin: 6rem 10rem; */
+  padding: 40px;
 }
 
 .student_info {
   display: flex;
+  height: 80vh;
+  padding: 3rem;
   flex-direction: column;
-  margin-top: 20px;
+  border: 1px solid gray;
+  border-radius: 10px;
+  margin: 2rem 4rem;
+  background-color: #fff;
 }
 
 .info_line {
   padding: 10px;
+  display: flex;
+  flex-direction: row;
+  font-size: 1.2rem;
+  margin-left: 3rem;
+}
+
+.info_line_title {
+  font-weight: 700;
+  margin-right: 10px;
+  font-size: 1.2rem;
 }
 
 .assignment_box {
@@ -59,4 +81,22 @@
   border-radius: 10px;
   margin: 5px 0;
   padding: 5px;
+}
+
+.previous_asnmts {
+  display: flex;
+  flex-direction: column;
+  margin-left: 4rem;
+  margin-top: 2rem;
+}
+
+.prev_asnmt_header {
+  color: #008c95;
+  font-size: 1.2rem;
+}
+
+.current_asnmt_header {
+  font-size: 1.2rem;
+  color: #61457f;
+  margin-top: 1.5rem;
 }

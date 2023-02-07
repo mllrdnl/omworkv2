@@ -1,5 +1,6 @@
 import React from "react";
 import Image from "next/image";
+import Link from "next/link";
 import styles from "../styles/Sidebar.module.css";
 
 const Sidebar = () => {
@@ -11,11 +12,19 @@ const Sidebar = () => {
       </div>
 
       <div className={styles.sidebar_links}>
-        <p className={styles.sidebar_link}>Dashboard</p>
-        <p className={styles.sidebar_link}>Assignments</p>
-        <p className={styles.sidebar_link}>Progress</p>
-        <p className={styles.sidebar_link}>Settings</p>
-        <p className={styles.sidebar_link}>Log Out</p>
+        <Link href="/" className={styles.sidebar_link}>
+          <p>Dashboard</p>
+        </Link>
+        <Link href="/assignments/1" className={styles.sidebar_link}>
+          <p>Assignments</p>
+        </Link>
+        <Link href="/progress/1" className={styles.sidebar_link}>
+          <p>Progress</p>
+        </Link>
+        <Link href="/settings/1" className={styles.sidebar_link}>
+          <p>Settings</p>
+        </Link>
+        <button className={styles.sidebar_link}>Log Out</button>
       </div>
     </div>
   );

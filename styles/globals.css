@@ -8,7 +8,12 @@ html,
   margin: 0;
 }
 
-@media (prefers-color-scheme: dark) {
+a {
+  text-decoration: none;
+  color: unset;
+}
+
+/* @media (prefers-color-scheme: dark) {
   html {
     color-scheme: dark;
   }
@@ -16,4 +21,4 @@ html,
     color: white;
     background: black;
   }
-}
+} */
