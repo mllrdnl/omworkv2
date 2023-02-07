@@ -1,0 +1,62 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  margin: 6rem 10rem;
+}
+
+.student_info {
+  display: flex;
+  flex-direction: column;
+  margin-top: 20px;
+}
+
+.info_line {
+  padding: 10px;
+}
+
+.assignment_box {
+  display: flex;
+  flex-direction: column;
+  margin-left: 4rem;
+}
+
+.asnmt_list {
+  list-style: none;
+}
+
+.asnmt_list_item_title {
+  display: flex;
+  flex-direction: row;
+  width: 80%;
+  justify-content: space-between;
+  font-size: 1.2rem;
+}
+
+.asnmt_name,
+.asnmt_freq,
+.asnmt_dur,
+.asnmt_btns {
+  width: 20%;
+  padding: 5px;
+}
+
+.asnmt_btns {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+/* .asnmt_btn {
+  width: 10%;
+} */
+
+.asnmt_list_item {
+  display: flex;
+  flex-direction: row;
+  width: 80%;
+  justify-content: space-between;
+  border: 1px solid gray;
+  border-radius: 10px;
+  margin: 5px 0;
+  padding: 5px;
+}
