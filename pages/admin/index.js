@@ -1,5 +1,6 @@
 import React from "react";
 import Image from "next/image";
+import Link from "next/link";
 import styles from "../../styles/Admin.module.css";
 
 const index = () => {
@@ -11,10 +12,18 @@ const index = () => {
 
         <div className={styles.sidebar_links}>
           <div>
-            <p className={styles.sidebar_link}>Student Dashboard</p>
-            <p className={styles.sidebar_link}>Library</p>
-            <p className={styles.sidebar_link}>Settings</p>
-            <p className={styles.sidebar_link}>Logout</p>
+            <Link href="/" className={styles.sidebar_link}>
+              <p>Student Dashboard</p>
+            </Link>
+            <Link href="/" className={styles.sidebar_link}>
+              <p>Library</p>
+            </Link>
+            <Link href="/" className={styles.sidebar_link}>
+              <p>Settings</p>
+            </Link>
+            <Link href="/" className={styles.sidebar_link}>
+              <p>Log Out</p>
+            </Link>
           </div>
         </div>
       </div>
@@ -33,6 +42,63 @@ const index = () => {
 
         <div className={styles.student_container}>
           <h2>Students</h2>
+          <ul className={styles.student_list}>
+            <li className={styles.student_item_title}>
+              <div className={styles.student_name_title}>
+                <p>Student Name</p>
+              </div>
+              <div className={styles.student_asnmts_title}>
+                <p>Assignments</p>
+              </div>
+
+              <div className={styles.student_edit_title}>
+                <p>Buttons</p>
+              </div>
+            </li>
+
+            <li className={styles.student_item}>
+              <div className={styles.student_name}>
+                <p>Aldous Daniel-Bair</p>
+              </div>
+              <div className={styles.student_asnmts}>
+                <p>Assignment 1, Assignment 2, Assignment 3</p>
+              </div>
+
+              <div className={styles.student_edit}>
+                <Link href="/student/1">
+                  <p>Edit</p>
+                </Link>
+              </div>
+            </li>
+            <li className={styles.student_item}>
+              <div className={styles.student_name}>
+                <p>Aldous Daniel-Bair</p>
+              </div>
+              <div className={styles.student_asnmts}>
+                <p>Assignment 2, Assignment 3</p>
+              </div>
+
+              <div className={styles.student_edit}>
+                <Link href="/student/1">
+                  <p>Edit</p>
+                </Link>
+              </div>
+            </li>
+            <li className={styles.student_item}>
+              <div className={styles.student_name}>
+                <p>Aldous Daniel-Bair</p>
+              </div>
+              <div className={styles.student_asnmts}>
+                <p>Assignment 1, Assignment 2</p>
+              </div>
+
+              <div className={styles.student_edit}>
+                <Link href="/student/1">
+                  <p>Edit</p>
+                </Link>
+              </div>
+            </li>
+          </ul>
         </div>
       </div>
     </div>
