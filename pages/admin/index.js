@@ -1,32 +1,13 @@
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
+import AdminSidebar from "../../components/AdminSidebar";
 import styles from "../../styles/Admin.module.css";
 
 const index = () => {
   return (
     <div className={styles.container}>
-      <div className={styles.sidebar}>
-        <Image src="/MCW_logo.png" alt="" width={180} height={265} />
-        <h1>OmWork</h1>
-
-        <div className={styles.sidebar_links}>
-          <div>
-            <Link href="/" className={styles.sidebar_link}>
-              <p>Student Dashboard</p>
-            </Link>
-            <Link href="/" className={styles.sidebar_link}>
-              <p>Library</p>
-            </Link>
-            <Link href="/" className={styles.sidebar_link}>
-              <p>Settings</p>
-            </Link>
-            <Link href="/" className={styles.sidebar_link}>
-              <p>Log Out</p>
-            </Link>
-          </div>
-        </div>
-      </div>
+      <AdminSidebar />
 
       <div className={styles.body}>
         <div className={styles.header}>

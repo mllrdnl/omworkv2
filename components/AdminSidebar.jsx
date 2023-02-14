@@ -1,9 +1,9 @@
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
-import styles from "../styles/Sidebar.module.css";
+import styles from "../styles/AdminSb.module.css";
 
-const Sidebar = () => {
+const AdminSidebar = () => {
   return (
     <div className={styles.container}>
       <div className={styles.logo}>
@@ -13,20 +13,18 @@ const Sidebar = () => {
 
       <div className={styles.sidebar_links}>
         <Link href="/" className={styles.sidebar_link}>
-          <p>Dashboard</p>
+          <p>Student Dashboard</p>
         </Link>
-        <Link href="/assignments/1" className={styles.sidebar_link}>
-          <p>Assignments</p>
+        <Link href="/admin/library" className={styles.sidebar_link}>
+          <p>Library</p>
         </Link>
-        <Link href="/progress/1" className={styles.sidebar_link}>
-          <p>Progress</p>
-        </Link>
-        <Link href="/settings/1" className={styles.sidebar_link}>
+        <Link href="/" className={styles.sidebar_link}>
           <p>Settings</p>
         </Link>
+        <button className={styles.sidebar_link}>Log Out</button>
       </div>
     </div>
   );
 };
 
-export default Sidebar;
+export default AdminSidebar;

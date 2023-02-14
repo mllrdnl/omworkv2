@@ -1,0 +1,56 @@
+.body {
+  height: 100vh;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  right: 0;
+  /* padding: 1.5rem; */
+  display: flex;
+  flex-direction: column;
+  /* padding-left: 20%; */
+  /* background-color: #008c95; */
+}
+
+.header {
+  display: flex;
+  flex-direction: column;
+  background-color: #008c95;
+  height: 10%;
+  /* margin-left: 20%; */
+}
+
+.header h2 {
+  margin-left: 20%;
+}
+
+.btns {
+  margin-left: 20%;
+}
+
+.homework {
+  margin-left: 20%;
+  margin-right: 10%;
+}
+
+.hw_books,
+.hw_pdfs,
+.hw_videos {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid gray;
+  margin: 20px 0px;
+  padding: 1rem;
+}
+
+.book_asnmt,
+.pdf_asnmt,
+.video_asnmt {
+  display: flex;
+  flex-direction: column;
+  height: 120px;
+  width: 120px;
+  border: 1px solid gray;
+  border-radius: 15px;
+  padding: 10px;
+  margin-top: 10px;
+}
