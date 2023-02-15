@@ -1,8 +1,10 @@
 import React from "react";
 import AdminSidebar from "../../components/AdminSidebar";
+import HwLibCard from "../../components/hwLibCard.jsx";
 import styles from "../../styles/Library.module.css";
+import axios from "axios";
 
-const library = () => {
+const library = ({ assignmentList }) => {
   return (
     <div className={styles.library_container}>
       <AdminSidebar />
@@ -35,6 +37,10 @@ const library = () => {
               <div className={styles.video_asnmt}>Video</div>
             </div>
           </div>
+
+          {assignmentList.map((asnmt) => (
+            <HwLibCard key={asnmt._id} asnmt={asnmt} />
+          ))}
         </div>
       </div>
     </div>
@@ -42,3 +48,12 @@ const library = () => {
 };
 
 export default library;
+
+export const getServerSideProps = async () => {
+  const res = await axios.get("http://localhost:3000/api/assignments");
+  return {
+    props: {
+      assignmentList: res.data,
+    },
+  };
+};

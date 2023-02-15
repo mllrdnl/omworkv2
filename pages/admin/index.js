@@ -3,6 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import AdminSidebar from "../../components/AdminSidebar";
 import styles from "../../styles/Admin.module.css";
+import axios from "axios";
 
 const index = () => {
   return (

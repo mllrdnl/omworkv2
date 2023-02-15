@@ -1,0 +1,17 @@
+.displayCard {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid gray;
+  border-radius: 15px;
+  height: 200px;
+  width: 200px;
+}
+
+.cardPic {
+  height: 100px;
+  width: 180px;
+  background-color: gray;
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+}

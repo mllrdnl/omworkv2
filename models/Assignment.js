@@ -8,7 +8,7 @@ const assignmentSchema = new Schema(
     },
     category: {
       type: String,
-      required: true,
+      required: false,
     },
     desc: {
       type: String,
@@ -16,22 +16,6 @@ const assignmentSchema = new Schema(
     },
     file: {
       type: String,
-      required: false,
-    },
-    frequency: {
-      type: String,
-      required: false,
-    },
-    duration: {
-      type: String,
-      required: false,
-    },
-    dateAssigned: {
-      type: String,
-      required: false,
-    },
-    active: {
-      type: Boolean,
       required: false,
     },
   },

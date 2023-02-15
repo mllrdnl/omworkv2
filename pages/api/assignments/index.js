@@ -1,9 +1,5 @@
 import connectMongo from "../../../utils/connectMongo.js";
 import Assignment from "../../../models/Assignment.js";
-import {
-  getAssignments,
-  createAssignment,
-} from "../../../utils/controllers/asnmtController.js";
 
 export default async function handler(req, res) {
   const { method } = req;
