@@ -1,0 +1,70 @@
+.container {
+  display: flex;
+  flex-direction: column;
+}
+
+.formContainer {
+  margin-left: 20%;
+}
+
+.addForm {
+  display: flex;
+  flex-direction: column;
+  width: 60%;
+  height: 70vh;
+  background-color: #f2f3f5;
+  border-radius: 15px;
+  border: 1px solid gray;
+  padding: 20px;
+  margin-top: 40px;
+  margin-left: 40px;
+}
+
+.studentName {
+  margin: 1rem;
+}
+
+.parentName {
+  margin: 1rem;
+}
+
+.studentName label {
+  margin-right: 10px;
+  margin-left: 10px;
+}
+
+.studentName input {
+  margin-left: 10px;
+}
+
+.parentName label {
+  margin-right: 10px;
+  margin-left: 10px;
+}
+
+.parentName input {
+  margin-left: 10px;
+}
+
+.parentEmail label {
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.parentEmail input {
+  margin: 0px 10px;
+}
+
+.assign {
+  margin: 1rem;
+}
+
+.products {
+  margin: 1rem;
+}
+
+.btnRow {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+}
