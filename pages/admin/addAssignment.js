@@ -22,6 +22,11 @@ const addAssignment = () => {
                 <option value="stretch">Stretch</option>
               </select>
             </div>
+
+            <div className={styles.fileUpload}>
+              <label>File</label>
+              <input type="file" name="assignment" />
+            </div>
           </form>
         </div>
       </div>
