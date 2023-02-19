@@ -1,0 +1,21 @@
+.uploaderContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border: 2px dashed gray;
+  height: 200px;
+  width: 300px;
+  cursor: pointer;
+  border-radius: 10px;
+}
+
+.uploadedRow {
+  margin: 10px 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 20px;
+  border-radius: 5px;
+}

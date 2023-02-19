@@ -17,7 +17,7 @@ export const config = {
 export default async function handler(req, res) {
   const form = formidable();
   form.parse(req, async (err, fields, files) => {
-    if (!files.assignment) {
+    if (!files.asnmtFile) {
       res.status(400).send("No file uploaded");
       return;
     }
@@ -27,7 +27,7 @@ export default async function handler(req, res) {
         {
           Bucket: process.env.AWS_BUCKET_NAME,
           Key: files.assignment.originalFilename,
-          Body: fs.createReadStream(files.assignment.filepath),
+          Body: fs.createReadStream(files.asnmtFile.filepath),
           // keeping ACL private
         },
         async () => res.status(201).send("File uploaded")

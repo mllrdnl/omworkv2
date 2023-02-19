@@ -1,3 +1,42 @@
+.container {
+  display: flex;
+  flex-direction: row;
+}
+
+.adminBar {
+  width: 20%;
+  height: 100vh;
+}
+
 .formContainer {
-  margin-left: 20%;
+  margin-top: 40px;
+}
+
+.formContainer h2 {
+  margin-bottom: 1.5rem;
+}
+
+.formContainer form {
+  background-color: #e2e2e2;
+  width: 50vw;
+  padding: 20px;
+  border-radius: 10px;
+}
+
+.submitBtn {
+  font-size: 16px;
+  font-weight: 700;
+  width: 30%;
+  padding: 10px;
+  border: none;
+  border-radius: 15px;
+  background-color: #26303e;
+  color: #6bb6c9;
+  margin: 10px auto;
+  cursor: pointer;
+}
+
+.submitBtn:hover {
+  background-color: #6bb6c9;
+  color: #26303e;
 }
