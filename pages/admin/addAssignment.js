@@ -3,6 +3,7 @@ import AdminSidebar from "../../components/AdminSidebar.jsx";
 import FileUploader from "../../components/FileUploader.jsx";
 import FormInput from "../../components/FormInput.jsx";
 import styles from "../../styles/addAssignment.module.css";
+import axios from "axios";
 
 const addAssignment = () => {
   const [values, setValues] = useState({
@@ -11,6 +12,8 @@ const addAssignment = () => {
     desc: "",
     asnmtFile: "",
   });
+
+  const [error, setError] = useState(null);
 
   const inputs = [
     {
@@ -52,8 +55,30 @@ const addAssignment = () => {
     },
   ];
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+
+    if (!file) return;
+
+    const formData = new FormData();
+    formData.append("title", title);
+    formData.append("category", category);
+    formData.append("desc", desc);
+    formData.append("asnmtFile", file);
+
+    console.log(formData);
+
+    const config = {
+      headers: {
+        "content-type": "multipart/form-data",
+      },
+    };
+
+    try {
+      await axios.post("/api/upload", formData, config);
+    } catch (e) {
+      setError(e.message);
+    }
   };
 
   const onChange = (e) => {
@@ -87,6 +112,7 @@ const addAssignment = () => {
             SUBMIT
           </button>
         </form>
+        {error && <p>{error}</p>}
       </div>
     </div>
   );

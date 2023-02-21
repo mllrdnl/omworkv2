@@ -17,8 +17,16 @@ const index = () => {
             <p>Today is Monday, Febuary 5th</p>
           </div>
           <div className={styles.admin_btns}>
-            <div className={styles.add_student}>Add Student</div>
-            <div className={styles.add_hw}>Add Homework</div>
+            <div className={styles.add_student}>
+              <Link href="/admin/addStudent">
+                <p>Add Student</p>
+              </Link>
+            </div>
+            <div className={styles.add_hw}>
+              <Link href="/admin/assignOmWork">
+                <p>Assign omWork</p>
+              </Link>
+            </div>
           </div>
         </div>
 

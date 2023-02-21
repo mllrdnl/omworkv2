@@ -1,0 +1,83 @@
+.container {
+  display: flex;
+  flex-direction: row;
+}
+
+.sidebar {
+  width: 18%;
+}
+
+.body {
+  display: flex;
+  flex-direction: column;
+}
+
+.body h1 {
+  margin-top: 20px;
+}
+
+.students {
+  display: flex;
+  flex-direction: column;
+  height: 20vh;
+  width: 75vw;
+  border: 1px solid gray;
+  border-radius: 15px;
+  padding: 20px;
+  margin: 20px 0px;
+}
+
+.assignments {
+  display: flex;
+  flex-direction: column;
+  /* height: 20vh; */
+  width: 75vw;
+  border: 1px solid gray;
+  border-radius: 15px;
+  padding: 20px;
+  margin: 20px 0px;
+}
+
+.searchBar {
+  display: flex;
+  flex-direction: row;
+  margin: 20px;
+}
+
+.searchBar input {
+  width: 80%;
+  height: 3rem;
+  font-size: 16px;
+  padding-left: 10px;
+  border-radius: 10px;
+  border: 1px solid lightgray;
+}
+
+.searchIcon {
+  position: relative;
+  float: right;
+  left: -40px;
+  top: 10px;
+  cursor: pointer;
+}
+
+.selectedBox {
+  margin-left: 20px;
+}
+
+.saveBtn {
+  background-color: #26303e;
+  color: #6bb6c9;
+  font-weight: 600;
+  font-size: 1.2rem;
+  padding: 15px;
+  width: 200px;
+  border: none;
+  border-radius: 15px;
+  cursor: pointer;
+}
+
+.saveBtn:hover {
+  background-color: #6bb6c9;
+  color: #26303e;
+}

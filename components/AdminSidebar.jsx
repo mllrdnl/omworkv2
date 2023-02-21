@@ -12,7 +12,7 @@ const AdminSidebar = () => {
       </div>
 
       <div className={styles.sidebar_links}>
-        <Link href="/" className={styles.sidebar_link}>
+        <Link href="/admin" className={styles.sidebar_link}>
           <p>Student Dashboard</p>
         </Link>
         <Link href="/admin/library" className={styles.sidebar_link}>
