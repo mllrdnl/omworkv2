@@ -17,8 +17,8 @@ export default async function handler(req, res) {
 
   if (method === "POST") {
     try {
-      const assignment = await Assignment.create(req.body);
-      res.status(201).json(assignment);
+      const newAssignment = await Assignment.create(req.body);
+      res.status(201).json(newAssignment);
     } catch (error) {
       res.status(500).json(error);
     }

@@ -2,39 +2,72 @@ import fs from "fs";
 import S3 from "aws-sdk/clients/s3.js";
 import formidable from "formidable";
 
-const s3Client = new S3({
+export const config = {
+  api: {
+    bodyParser: {
+      sizeLimit: "8mb",
+    },
+  },
+};
+
+const s3 = new S3({
   region: process.env.AWS_BUCKET_REGION,
   accessKeyId: process.env.AWS_ACCESS_KEY,
   secretAccessKey: process.env.AWS_SECRET_KEY,
 });
 
-export const config = {
-  api: {
-    bodyParser: false,
-  },
+export default async (req, res) => {
+  const { method } = req;
+
+  if (method !== "POST") {
+    return res.status(405).json({ message: "Method not allowed" });
+  }
+
+  try {
+    const { name, type } = req.body;
+
+    const fileParams = {
+      Bucket: process.env.BUCKET_NAME,
+      Key: name,
+      ContentType: type,
+      ACL: "public-read",
+    };
+
+    const url = await s3.getSignedUrlPromise("putObject", fileParams);
+
+    res.status(200).json({ url });
+  } catch (error) {
+    console.log(error);
+    res.status(400).json({ message: error });
+  }
 };
 
-export default async function handler(req, res) {
-  const form = formidable();
-  form.parse(req, async (err, fields, files) => {
-    if (!files.asnmtFile) {
-      res.status(400).send("No file uploaded");
-      return;
-    }
+// export default async function handler(req, res) {
+//   const { method } = req;
 
-    try {
-      return s3Client.putObject(
-        {
-          Bucket: process.env.AWS_BUCKET_NAME,
-          Key: files.assignment.originalFilename,
-          Body: fs.createReadStream(files.asnmtFile.filepath),
-          // keeping ACL private
-        },
-        async () => res.status(201).send("File uploaded")
-      );
-    } catch (error) {
-      console.log(error);
-      res.status(500).send("Error uploading file");
-    }
-  });
-}
+//   if (method === "POST") {
+//     const form = formidable();
+//     form.parse(req, async (err, fields, files) => {
+//       if (!files.file) {
+//         res.status(400).send("No file uploaded");
+//         return;
+//       }
+
+//       try {
+//         return s3Client.putObject(
+//           {
+//             Bucket: process.env.AWS_BUCKET_NAME,
+//             Key: files.file.originalFilename,
+//             Body: fs.createReadStream(files.file.filepath),
+//             ACL: "public-read",
+//           },
+//           async () => res.status(201).send("File uploaded"),
+//           console.log(files)
+//         );
+//       } catch (error) {
+//         console.log(error);
+//         res.status(500).send("Error uploading file");
+//       }
+//     });
+//   }
+// }

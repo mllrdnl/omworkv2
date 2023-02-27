@@ -6,12 +6,18 @@ import styles from "../../styles/addAssignment.module.css";
 import axios from "axios";
 
 const addAssignment = () => {
-  const [values, setValues] = useState({
-    title: "",
-    category: "",
-    desc: "",
-    asnmtFile: "",
-  });
+  // const [values, setValues] = useState({
+  //   title: "",
+  //   category: "",
+  //   desc: "",
+  //   asnmtFile: "",
+  // });
+
+  const [title, setTitle] = useState(null);
+  const [category, setCategory] = useState(null);
+  const [desc, setDesc] = useState(null);
+  // const [file, setFile] = useState(null);
+  // const [asnmtFile, setAsnmtFile] = useState(null);
 
   const [error, setError] = useState(null);
 
@@ -57,35 +63,45 @@ const addAssignment = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    handleCreate();
 
-    if (!file) return;
-
-    const formData = new FormData();
-    formData.append("title", title);
-    formData.append("category", category);
-    formData.append("desc", desc);
-    formData.append("asnmtFile", file);
-
-    console.log(formData);
-
-    const config = {
-      headers: {
-        "content-type": "multipart/form-data",
-      },
-    };
-
-    try {
-      await axios.post("/api/upload", formData, config);
-    } catch (e) {
-      setError(e.message);
-    }
+    // try {
+    //   await axios.post("/api/assignments/", values);
+    // } catch (e) {
+    //   setError(e.message);
+    // }
   };
+  // const config = {
+  //   headers: {
+  //     "content-type": "multipart/form-data",
+  //   },
+  // };
 
-  const onChange = (e) => {
-    setValues({ ...values, [e.target.name]: e.target.value });
-  };
+  // const handleCreate = async () => {
+  //   const data = new FormData();
+  //   data.append("file", file);
 
-  console.log(values);
+  //   try {
+  //     const uploadRes = await axios.post("/api/upload", data);
+
+  //     const { url } = uploadRes.data;
+  //     const newAssignment = {
+  //       title,
+  //       category,
+  //       desc,
+  //       asnmtFile: url,
+  //     };
+  //     console.log(uploadRes);
+
+  //     await axios.post("/api/assignments", newAssignment, config);
+  //   } catch (error) {
+  //     console.log(error);
+  //   }
+  // };
+
+  // const onChange = (e) => {
+  //   setValues({ ...values, [e.target.name]: e.target.value });
+  // };
 
   return (
     <div className={styles.container}>
@@ -97,16 +113,39 @@ const addAssignment = () => {
         <h2>Add an Assignment</h2>
         <form onSubmit={handleSubmit}>
           <div className={styles.formInputs}>
-            {inputs.map((input) => (
+            <label>Title</label>
+            <input type="text" onChange={(e) => setTitle(e.target.value)} />
+          </div>
+          <div className={styles.formInputs}>
+            <label>Category</label>
+            <input type="text" onChange={(e) => setCategory(e.target.value)} />
+          </div>
+          <div className={styles.formInputs}>
+            <label>Description</label>
+            <textarea
+              rows={4}
+              type="text"
+              onChange={(e) => setDesc(e.target.value)}
+            />
+          </div>
+          {/* <div className={styles.formInputs}>
+            <label>Description</label>
+            <input
+              name="file"
+              type="file"
+              onChange={(e) => setFile(e.target.files[0])}
+            />
+          </div> */}
+          {/* {inputs.map((input) => (
               <FormInput
                 key={input.id}
                 {...input}
                 value={values[input.name]}
                 onChange={onChange}
               />
-            ))}
-          </div>
-          {/* <FileUploader /> */}
+            ))} */}
+
+          <FileUploader />
 
           <button className={styles.submitBtn} type="submit">
             SUBMIT

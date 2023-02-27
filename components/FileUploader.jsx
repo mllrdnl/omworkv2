@@ -1,11 +1,53 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styles from "../styles/FileUploader.module.css";
 import { MdCloudUpload, MdDelete } from "react-icons/md";
 import { AiFillFileImage } from "react-icons/ai";
+import axios from "axios";
 
-const FileUploader = () => {
+export default function FileUploader() {
   const [file, setFile] = useState(null);
-  const [fileName, setFileName] = useState("No file selected");
+  // const [fileName, setFileName] = useState("No file selected");
+
+  // const selectFile = (e) => {
+  //     setFile(e.target.files[0]);
+  //   };
+  const config = {
+    headers: {
+      "Content-Type": "application/json",
+    },
+  };
+
+  const uploadFile = async () => {
+    try {
+      const { data } = await axios.post(
+        "/api/upload",
+        {
+          name: file.name,
+          type: file.type,
+        },
+        config
+      );
+
+      const url = data.url;
+      await axios.put(url, file, {
+        headers: {
+          "Content-Type": file.type,
+          "Access-Control-Allow-Origin": "*",
+        },
+      });
+      console.log(data);
+      setFile(null);
+    } catch (error) {
+      console.log(error.response.data);
+    }
+  };
+
+  useEffect(() => {
+    if (file) {
+      const uploadedFileDetail = () => uploadFile();
+      uploadedFileDetail();
+    }
+  }, [file]);
 
   return (
     <div
@@ -16,39 +58,33 @@ const FileUploader = () => {
         type="file"
         className="fileInput"
         hidden
-        onChange={({ target: { files } }) => {
-          files[0] && setFileName(files[0].name);
-          if (files) {
-            setFile(URL.createObjectURL(files[0]));
-          }
+        onChange={(e) => {
+          setFile(e.target.files[0]);
         }}
       />
 
-      {file ? (
-        <img src={file} width={60} height={60} alt={fileName} />
+      {/* {file ? (
+        <img src={file} width={60} height={60} alt={file} />
       ) : (
         <>
           <MdCloudUpload color="#12475cf" size={60} />
           <p>Browse Files to upload</p>
         </>
-      )}
+      )} */}
 
-      <div className={styles.uploadedRow}>
+      {/* <div className={styles.uploadedRow}>
         <div>
           <AiFillFileImage color="#26303E" />
         </div>
         <div>
-          {fileName}
+          {file}
           <MdDelete
             onClick={() => {
-              setFileName("No file selected");
               setFile(null);
             }}
           />
         </div>
-      </div>
+      </div> */}
     </div>
   );
-};
-
-export default FileUploader;
+}

@@ -3,6 +3,7 @@ import AdminSidebar from "../../components/AdminSidebar";
 import HwLibCard from "../../components/hwLibCard.jsx";
 import styles from "../../styles/Library.module.css";
 import axios from "axios";
+import Link from "next/link";
 
 const library = ({ assignmentList }) => {
   return (
@@ -12,7 +13,9 @@ const library = ({ assignmentList }) => {
         <div className={styles.header}>
           <h2>OmWork Assignment Library</h2>
           <div className={styles.btns}>
-            <button>Add New</button>
+            <div className={styles.addNewBtn}>
+              <Link href="/admin/addAssignment">Add New</Link>
+            </div>
           </div>
         </div>
 
