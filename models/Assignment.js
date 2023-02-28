@@ -14,7 +14,7 @@ const assignmentSchema = new Schema(
       type: String,
       required: false,
     },
-    file: {
+    fileName: {
       type: String,
       required: false,
     },

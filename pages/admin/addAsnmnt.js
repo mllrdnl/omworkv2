@@ -42,26 +42,28 @@ const addAsnmnt = () => {
   }, [file]);
 
   return (
-    <div className={styles.container}>
+    <div className={styles.tempContainer}>
       <form onSubmit={handleSubmit}>
-        <div>
-          <label>File upload</label>
+        <div className={styles.tempInput}>
+          <label className={styles.tempLabel}>File upload</label>
           <input
             type="file"
             name="file"
             onChange={(e) => setFile(e.target.files[0])}
           />
         </div>
-        <button type="submit">Upload</button>
+        <div className={styles.button}>
+          <button type="submit">Upload</button>
+        </div>
       </form>
 
       {file ? (
-        <div>
+        <div className={styles.tempMessage}>
           File uploaded at: {file.name}
           <p>Message</p>
         </div>
       ) : (
-        <div>No file uploaded</div>
+        <div className={styles.tempMessage}>No file uploaded</div>
       )}
     </div>
   );

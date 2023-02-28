@@ -40,3 +40,26 @@
   background-color: #6bb6c9;
   color: #26303e;
 }
+
+.tempContainer {
+  display: flex;
+  flex-direction: column;
+  margin-top: 40px;
+  margin-left: 60px;
+}
+
+.tempInput {
+  display: flex;
+  flex-direction: column;
+  padding: 40px;
+}
+
+.tempMessage {
+  display: flex;
+  flex-direction: column;
+  margin-left: 40px;
+}
+
+.button {
+  margin-left: 40px;
+}
