@@ -1,11 +1,37 @@
 import React from "react";
-import Image from "next/image";
 import Link from "next/link";
 import AdminSidebar from "../../components/AdminSidebar";
 import styles from "../../styles/Admin.module.css";
-import axios from "axios";
+import StudentList from "../../components/StudentList";
+import StudentForm from "../../components/StudentForm";
+import { useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { deleteAction, toggleChangeAction } from "../../redux/reducer";
+import { deleteStudent, getStudents } from "../../lib/helper.js";
+import { useQueryClient } from "react-query";
 
 const index = () => {
+  const visible = useSelector((state) => state.app.client.toggleForm);
+  const deleteId = useSelector((state) => state.app.client.deleteId);
+  const queryClient = useQueryClient();
+  const dispatch = useDispatch();
+
+  const handler = () => {
+    dispatch(toggleChangeAction());
+  };
+
+  const deletehandler = async () => {
+    if (deleteId) {
+      await deleteStudent(deleteId);
+      await queryClient.prefetchQuery("students", getStudents);
+      await dispatch(deleteAction(null));
+    }
+  };
+  const cancelhandler = async () => {
+    console.log("cancel");
+    await dispatch(deleteAction(null));
+  };
+
   return (
     <div className={styles.container}>
       <AdminSidebar />
@@ -17,10 +43,8 @@ const index = () => {
             <p>Today is Monday, Febuary 5th</p>
           </div>
           <div className={styles.admin_btns}>
-            <div className={styles.add_student}>
-              <Link href="/admin/addStudent">
-                <p>Add Student</p>
-              </Link>
+            <div className={styles.add_student} onClick={handler}>
+              <p>Add Student</p>
             </div>
             <div className={styles.add_hw}>
               <Link href="/admin/assignOmWork">
@@ -29,66 +53,9 @@ const index = () => {
             </div>
           </div>
         </div>
-
-        <div className={styles.student_container}>
-          <h2>Students</h2>
-          <ul className={styles.student_list}>
-            <li className={styles.student_item_title}>
-              <div className={styles.student_name_title}>
-                <p>Student Name</p>
-              </div>
-              <div className={styles.student_asnmts_title}>
-                <p>Assignments</p>
-              </div>
-
-              <div className={styles.student_edit_title}>
-                <p>Buttons</p>
-              </div>
-            </li>
-
-            <li className={styles.student_item}>
-              <div className={styles.student_name}>
-                <p>Aldous Daniel-Bair</p>
-              </div>
-              <div className={styles.student_asnmts}>
-                <p>Assignment 1, Assignment 2, Assignment 3</p>
-              </div>
-
-              <div className={styles.student_edit}>
-                <Link href="/student/1">
-                  <p>Edit</p>
-                </Link>
-              </div>
-            </li>
-            <li className={styles.student_item}>
-              <div className={styles.student_name}>
-                <p>Aldous Daniel-Bair</p>
-              </div>
-              <div className={styles.student_asnmts}>
-                <p>Assignment 2, Assignment 3</p>
-              </div>
-
-              <div className={styles.student_edit}>
-                <Link href="/student/1">
-                  <p>Edit</p>
-                </Link>
-              </div>
-            </li>
-            <li className={styles.student_item}>
-              <div className={styles.student_name}>
-                <p>Aldous Daniel-Bair</p>
-              </div>
-              <div className={styles.student_asnmts}>
-                <p>Assignment 1, Assignment 2</p>
-              </div>
-
-              <div className={styles.student_edit}>
-                <Link href="/student/1">
-                  <p>Edit</p>
-                </Link>
-              </div>
-            </li>
-          </ul>
+        <div className={styles.formContainer}>
+          {visible ? <StudentForm /> : <></>}
+          <StudentList />
         </div>
       </div>
     </div>

@@ -11,13 +11,13 @@ const userSchema = new Schema(
       type: String,
       required: true,
     },
-    parentOneName: {
+    parentFirst: {
       type: String,
       required: true,
     },
-    parentTwoName: {
+    parentLast: {
       type: String,
-      required: false,
+      required: true,
     },
     email: {
       type: String,
@@ -36,6 +36,12 @@ const userSchema = new Schema(
       {
         type: mongoose.Schema.Types.ObjectId,
         ref: "Assignment",
+      },
+    ],
+    products: [
+      {
+        type: String,
+        required: false,
       },
     ],
   },
