@@ -1,6 +1,6 @@
 import React from "react";
 import styles from "../styles/AddStudent.module.css";
-import { useQueryClient, useMutation, useQuery } from "react-query";
+import { useQueryClient, useMutation } from "react-query";
 import { addNewStudent, getStudents } from "../lib/helper.js";
 
 const AddStudentForm = ({ formData, setFormData }) => {
@@ -39,7 +39,7 @@ const AddStudentForm = ({ formData, setFormData }) => {
       products,
     };
     addMutation.mutate(model);
-    console.log(model);
+    console.log(formData);
   };
 
   if (addMutation.isLoading) return <div>Loading!</div>;

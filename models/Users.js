@@ -34,8 +34,8 @@ const userSchema = new Schema(
     },
     homework: [
       {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: "Assignment",
+        type: String,
+        required: false,
       },
     ],
     products: [
