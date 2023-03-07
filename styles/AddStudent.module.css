@@ -65,6 +65,22 @@
   border-radius: 5px;
 }
 
+.omwork input {
+  width: 45%;
+  font-size: 16px;
+  padding: 5px;
+  border: 1px solid lightgray;
+  border-radius: 5px;
+}
+
+.products input {
+  width: 45%;
+  font-size: 16px;
+  padding: 5px;
+  border: 1px solid lightgray;
+  border-radius: 5px;
+}
+
 .parentEmail {
   margin: 1rem 0rem;
   display: flex;

@@ -56,13 +56,18 @@ const AddStudentForm = ({ formData, setFormData }) => {
             <div className={styles.studentFirst}>
               <input
                 type="text"
-                name="studentFirst"
+                name="firstName"
                 placeholder="First Name"
                 onChange={setFormData}
               />
             </div>
             <div className={styles.studentLast}>
-              <input type="text" name="studentLast" placeholder="Last Name" />
+              <input
+                type="text"
+                name="lastName"
+                placeholder="Last Name"
+                onChange={setFormData}
+              />
             </div>
           </div>
           <div className={styles.parentInfo}>
@@ -74,7 +79,12 @@ const AddStudentForm = ({ formData, setFormData }) => {
                 placeholder="First Name"
                 onChange={setFormData}
               />
-              <input name="parentLast" placeholder="Last Name" />
+              <input
+                type="text"
+                name="parentLast"
+                placeholder="Last Name"
+                onChange={setFormData}
+              />
             </div>
             <div className={styles.parentEmail}>
               <input
@@ -85,7 +95,7 @@ const AddStudentForm = ({ formData, setFormData }) => {
               />
 
               <input
-                name="email"
+                name="password"
                 type="password"
                 placeholder="Password"
                 onChange={setFormData}
@@ -100,9 +110,23 @@ const AddStudentForm = ({ formData, setFormData }) => {
 
           <div className={styles.assign}>
             <h3>omWork Assignments</h3>
+            <div className={styles.omwork}>
+              <input
+                name="homework"
+                type="text"
+                placeholder="Assignments"
+                onChange={setFormData}
+              />
+            </div>
           </div>
           <div className={styles.products}>
             <h3>Recommended Products</h3>
+            <input
+              name="products"
+              type="text"
+              placeholder="Recommended Products"
+              onChange={setFormData}
+            />
           </div>
           <div className={styles.saveStudentRow}>
             <div className={styles.sendEmail}>

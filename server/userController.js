@@ -31,9 +31,12 @@ export async function postStudent(req, res) {
     const formData = req.body;
     if (!formData)
       return res.status(404).json({ error: "Form Data Not Provided...!" });
-    User.create(formData, function (err, data) {
-      return res.status(200).json(data);
-    });
+
+    const newStudent = await User.create(formData);
+
+    if (!newStudent)
+      return res.status(404).json({ error: "Error creating student" });
+    res.status(200).json(newStudent);
   } catch (error) {
     return res.status(404).json({ error });
   }
