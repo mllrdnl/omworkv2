@@ -5,7 +5,7 @@ import styles from "../../styles/Library.module.css";
 import axios from "axios";
 import Link from "next/link";
 
-const library = ({ assignmentList }) => {
+const library = () => {
   return (
     <div className={styles.library_container}>
       <AdminSidebar />
@@ -41,9 +41,9 @@ const library = ({ assignmentList }) => {
             </div>
           </div>
 
-          {assignmentList.map((asnmt) => (
+          {/* {assignmentList.map((asnmt) => (
             <HwLibCard key={asnmt._id} asnmt={asnmt} />
-          ))}
+          ))} */}
         </div>
       </div>
     </div>
@@ -52,11 +52,11 @@ const library = ({ assignmentList }) => {
 
 export default library;
 
-export const getServerSideProps = async () => {
-  const res = await axios.get("http://localhost:3000/api/assignments");
-  return {
-    props: {
-      assignmentList: res.data,
-    },
-  };
-};
+// export const getServerSideProps = async () => {
+//   const res = await axios.get("http://localhost:3000/api/assignments");
+//   return {
+//     props: {
+//       assignmentList: res.data,
+//     },
+//   };
+// };

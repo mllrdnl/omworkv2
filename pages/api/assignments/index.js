@@ -1,9 +1,6 @@
 import { createRouter } from "next-connect";
 import multer from "multer";
-import {
-  getAssignments,
-  createAssignment,
-} from "../../../server.js/assignments.js";
+
 import connectMongo from "../../../utils/connectMongo.js";
 
 const router = createRouter();

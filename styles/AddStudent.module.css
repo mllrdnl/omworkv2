@@ -3,15 +3,10 @@
   flex-direction: column;
 }
 
-.formContainer {
-  margin-left: 20%;
-}
-
 .addForm {
   display: flex;
   flex-direction: column;
   width: 80%;
-  height: 70vh;
   background-color: #f2f3f5;
   border-radius: 15px;
   border: 1px solid gray;
@@ -107,11 +102,11 @@
 }
 
 .assign {
-  margin: 1rem;
+  margin: 2rem;
 }
 
 .products {
-  margin: 1rem;
+  margin: 2rem;
 }
 
 .saveStudentRow {
