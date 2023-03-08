@@ -4,7 +4,7 @@ import { useQuery, useMutation, useQueryClient } from "react-query";
 import { getStudent, getStudents, updateStudent } from "../lib/helper.js";
 import styles from "../styles/AddStudent.module.css";
 
-const UpdateStudentForm = () => {
+const UpdateStudentForm = ({ formId, formData, setFormData }) => {
   const queryClient = useQueryClient();
 
   const { isLoading, isError, data, error } = useQuery(
@@ -24,15 +24,21 @@ const UpdateStudentForm = () => {
   if (isLoading) return <div>Loading...</div>;
   if (isError) return <div>Error</div>;
 
-  const { name, email, status } = data;
-  const [firstName, lastName] = name ? name.split(" ") : formData;
+  const {
+    firstName,
+    lastName,
+    parentFirst,
+    parentLast,
+    email,
+    password,
+    homework,
+    products,
+  } = data;
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    let studentName = `${formData.firstName ?? firstName} ${
-      formData.lastName ?? lastName
-    }`;
-    let updated = Object.assign({}, data, formData, { name: studentName });
+
+    let updated = Object.assign({}, data, formData);
     console.log(updated);
     await UpdateMutation.mutate(updated);
   };
@@ -40,19 +46,26 @@ const UpdateStudentForm = () => {
     <div className={styles.formContainer}>
       <div className={styles.addForm}>
         <h2>Update Student</h2>
-        <form onSubmit={onSubmit}>
+        <form onSubmit={handleSubmit}>
           <h3>Student:</h3>
           <div className={styles.studentName}>
             <div className={styles.studentFirst}>
               <input
                 type="text"
-                name="studentFirst"
+                name="firstName"
                 placeholder="First Name"
                 onChange={setFormData}
+                default={firstName}
               />
             </div>
             <div className={styles.studentLast}>
-              <input type="text" name="studentLast" placeholder="Last Name" />
+              <input
+                type="text"
+                name="lastName"
+                placeholder="Last Name"
+                onChange={setFormData}
+                default={lastName}
+              />
             </div>
           </div>
           <div className={styles.parentInfo}>
@@ -63,8 +76,15 @@ const UpdateStudentForm = () => {
                 name="parentFirst"
                 placeholder="First Name"
                 onChange={setFormData}
+                default={parentFirst}
               />
-              <input name="parentLast" placeholder="Last Name" />
+              <input
+                type="text"
+                name="parentLast"
+                placeholder="Last Name"
+                onChange={setFormData}
+                default={parentLast}
+              />
             </div>
             <div className={styles.parentEmail}>
               <input
@@ -72,13 +92,15 @@ const UpdateStudentForm = () => {
                 type="email"
                 placeholder="Email"
                 onChange={setFormData}
+                default={email}
               />
 
               <input
-                name="email"
+                name="password"
                 type="password"
                 placeholder="Password"
                 onChange={setFormData}
+                default={password}
               />
             </div>
             <div className={styles.resetPw}>

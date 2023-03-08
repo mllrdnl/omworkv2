@@ -8,6 +8,7 @@ import {
   deleteAction,
 } from "../redux/reducer";
 import { getStudents } from "../lib/helper.js";
+import { BiEdit, BiTrash } from "react-icons/bi";
 
 const StudentList = () => {
   const { isLoading, isError, data, error } = useQuery("students", getStudents);
@@ -51,7 +52,7 @@ function Li({
   parentFirst,
   parentLast,
   email,
-  assignments,
+  homework,
   products,
 }) {
   const visible = useSelector((state) => state.app.client.toggleForm);
@@ -76,9 +77,16 @@ function Li({
         {firstName || "uknown"} {lastName || "unknown"}
       </p>
 
-      <p>{assignments || "unknown"}</p>
+      <p>{homework || "unknown"}</p>
 
-      <p>Edit</p>
+      <div className={styles.buttons}>
+        <div className={styles.editBtn} onClick={onUpdate}>
+          <BiEdit size={28} />
+        </div>
+        <div className={styles.deleteBtn}>
+          <BiTrash size={28} />
+        </div>
+      </div>
     </li>
   );
 }

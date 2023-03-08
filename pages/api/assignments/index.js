@@ -1,64 +1,33 @@
-import { createRouter } from "next-connect";
-import multer from "multer";
-
 import connectMongo from "../../../utils/connectMongo.js";
+import {
+  getAssignment,
+  getAssignments,
+  postAssignment,
+  deleteAssignment,
+} from "../../../server/assignmentController.js";
 
-const router = createRouter();
-connectMongo();
+export default async function handler(req, res) {
+  connectMongo().catch(() =>
+    res.status(405).json({ error: "Error in the connection" })
+  );
+  const { method } = req;
 
-const storage = multer.memoryStorage();
-const upload = multer({ storage: storage });
-router.get(async (req, res) => {
-  const assignments = await getAssignments();
-  res.status(200).send(assignments);
-});
-
-router.post(upload.single("file"), async (req, res) => {
-  const fileName = req.file;
-  const title = req.body.title;
-  const category = req.body.category;
-  const desc = req.body.desc;
-
-  const assignment = await createAssignment(fileName, title, category, desc);
-
-  res.status(201).send(assignment);
-});
-
-export default router.handler({
-  onError: (err, req, res) => {
-    console.error(err.stack);
-    console.log(err);
-    res.status(500).end("Something broke!");
-  },
-  onNoMatch: (req, res) => {
-    res.status(404).end("Page is not found");
-  },
-});
-
-export const config = {
-  api: {
-    bodyParser: false, // Disallow body parsing, consume as stream
-  },
-};
-
-// export default async function handler(req, res) {
-//   const { method } = req;
-
-//   if (method === "GET") {
-//     try {
-//       const assignments = await Assignment.find();
-//       res.status(200).json(assignments);
-//     } catch (error) {
-//       res.status(500).json(error);
-//     }
-//   }
-
-//   if (method === "POST") {
-//     try {
-//       const newAssignment = await Assignment.create(req.body);
-//       res.status(201).json(newAssignment);
-//     } catch (error) {
-//       res.status(500).json(error);
-//     }
-//   }
-// }
+  switch (method) {
+    case "GET":
+      getAssignments(req, res);
+      break;
+    case "POST":
+      postAssignment(req, res);
+      break;
+    case "PUT":
+      putAssignment(req, res);
+      break;
+    case "DELETE":
+      deleteAssignment(req, res);
+      break;
+    default:
+      res.setHeader("Allow", ["GET", "POST", "PUT", "DELETE"]);
+      res.status(405).end(`Method ${method} Not Allowed`);
+      break;
+  }
+}
